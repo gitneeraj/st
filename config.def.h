@@ -6,6 +6,16 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+/* Spare fonts */
+static char *font2[] = {
+	"Inconsolata for Powerline:style=Medium:pixelsize=12:antialias=true:autohint=true",
+	"JoyPixels:style=Regular:pixelsize=11:antialias=true:autohint=true",
+	"Pomodoro:style=Regular:pixelsize=12:antialias=true:autohint=true",
+	"FontAwesome:style=Regular:pixelsize=12:antialias=true:autohint=true",
+	"icomoon:style=Regular:pixelsize=12:antialias=true:autohint=true",
+	"octicons:style=Medium:pixelsize=12:antialias=true:autohint=true",
+};
+
 static int borderpx = 2;
 
 /*
@@ -64,11 +74,11 @@ static unsigned int cursorthickness = 2;
  *    Bold affects lines thickness if boxdraw_bold is not 0. Italic is ignored.
  * 0: disable (render all U25XX glyphs normally from the font).
  */
-const int boxdraw = 0;
-const int boxdraw_bold = 0;
+const int boxdraw = 1;
+const int boxdraw_bold = 1;
 
 /* braille (U28XX):  1: render as adjacent "pixels",  0: use font */
-const int boxdraw_braille = 0;
+const int boxdraw_braille = 1;
 
 /*
  * bell volume. It must be a value between -100 and 100. Use 0 for disabling
@@ -244,8 +254,10 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
-	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ MODKEY,            	XK_k,     		kscrollup,      {.i =  1} },
+	{ MODKEY,            	XK_j,   		kscrolldown,    {.i =  1} },
+	{ MODKEY,            	XK_u,     		kscrollup,      {.i = -1} },
+	{ MODKEY,            	XK_d,   		kscrolldown,    {.i = -1} },
 };
 
 /*
